@@ -1,0 +1,11 @@
+Test plan identifier
+introdution
+Test scope
+features to be tested
+testing types
+test environment (requirements)
+test schedule
+exit criteria 
+approval 
+conclusion
+
