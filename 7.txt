@@ -1,0 +1,9 @@
+risk ID
+risk description
+category
+impact 
+liklihood
+risklevel
+
+risk id 
+mitigation strategy
