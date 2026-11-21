@@ -1,9 +1,25 @@
-risk ID
-risk description
-category
-impact 
-liklihood
-risklevel
+const int pirPin = 3;
+const int ledPin = 13;
+int motionStatus = LOW;
 
-risk id 
-mitigation strategy
+void setup() {
+  pinMode(pirPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  motionStatus = digitalRead(pirPin);
+  
+  if (motionStatus == HIGH) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("Motion detected");
+  } else {
+    digitalWrite(ledPin, LOW);
+    Serial.println("No motion");
+  }
+  
+  delay(500);
+}
+
+7

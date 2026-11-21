@@ -1,0 +1,21 @@
+int led = 13;
+int button = 2;
+
+void setup() {
+  pinMode(led, OUTPUT);
+  pinMode(button, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int state = digitalRead(button);
+  Serial.println(state);
+
+  if (state == HIGH) {
+    digitalWrite(led, HIGH);
+  } else {
+    digitalWrite(led, LOW);
+  }
+}
+
+4

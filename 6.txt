@@ -1,11 +1,24 @@
-Test plan identifier
-introdution
-Test scope
-features to be tested
-testing types
-test environment (requirements)
-test schedule
-exit criteria 
-approval 
-conclusion
+const int ldrPin = A0;
+const int ledPin = 9;
+int ldrValue = 0;
+int threshold = 500;
 
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  ldrValue = analogRead(ldrPin);
+  Serial.print("LDR Value : ");
+  Serial.println(ldrValue);
+
+  if (ldrValue < threshold) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+  delay(200);
+}
+
+6

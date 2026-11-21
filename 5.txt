@@ -1,11 +1,23 @@
-test case designed by
-test case executed by
-test case executed date
-module name
-preconditions
-test steps 
-test date
-expected results
-actual results
-status
-Remarks
+int potPin = A0;       // Potentiometer connected to analog pin A0
+int ledPin = 9;        // LED connected to PWM digital pin 9
+int potValue = 0;      // Variable to store the potentiometer reading
+int brightness = 0;    // Variable to store the mapped LED brightness
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  potValue = analogRead(potPin);
+  Serial.print("Potentiometer Value: ");
+  Serial.println(potValue);
+  
+  // Map the 10-bit analog input (0-1023) to an 8-bit PWM output (0-255)
+  brightness = map(potValue, 0, 1023, 0, 255);
+  
+  analogWrite(ledPin, brightness);
+  delay(500);
+}
+
+5

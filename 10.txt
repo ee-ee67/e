@@ -1,0 +1,30 @@
+int gasPin = A0;
+int ledPin = 13;
+int buzPin = 8;
+int gasValue;
+int threshold = 350;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzPin, OUTPUT);
+}
+
+void loop() {
+  gasValue = analogRead(gasPin);
+  Serial.print("Gas Sensor Value: ");
+  Serial.println(gasValue);
+
+  if (gasValue >= threshold) {
+    digitalWrite(ledPin, HIGH);
+    digitalWrite(buzPin, HIGH);
+    Serial.println("Warning: Threshold exceeded");
+  } else {
+    digitalWrite(ledPin, LOW);
+    digitalWrite(buzPin, LOW);
+  }
+
+  delay(1000);
+}
+
+10

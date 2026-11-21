@@ -1,0 +1,55 @@
+// Pin definitions (using underscores instead of hyphens)
+int TRIG_PIN = 4;
+int ECHO_PIN = 3;
+int RED_LED = 12;
+int GREEN_LED = 10;
+int BUZZER = 11; // Note: Avoid pin 1 as it is used for Serial TX
+
+void setup() {
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(RED_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  long duration;
+  float distance;
+
+  // Clear the TRIG_PIN
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+
+  // Trigger the sensor by setting TRIG_PIN HIGH for 10 microseconds
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  // Read the ECHO_PIN and calculate distance in cm
+  duration = pulseIn(ECHO_PIN, HIGH);
+  distance = (duration * 0.034) / 2;
+
+  // Print the distance to the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // LED and Buzzer control logic (from your image)
+  if (distance < 25) {
+    digitalWrite(RED_LED, HIGH);
+    digitalWrite(GREEN_LED, LOW);
+    // digitalWrite(BUZZER, HIGH); // Uncomment if using buzzer
+  } 
+  else {
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(GREEN_LED, HIGH);
+    // digitalWrite(BUZZER, LOW);  // Uncomment if using buzzer
+  }
+
+  delay(500);
+}
+
+9

@@ -1,0 +1,14 @@
+int ledR = 4;
+
+void setup() {
+  pinMode(ledR, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(ledR, HIGH);
+  delay(2000);
+  digitalWrite(ledR, LOW);
+  delay(2000);
+}
+
+3

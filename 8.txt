@@ -1,0 +1,44 @@
+int LED1 = 12;
+int LED2 = 10;
+int LED3 = 7;
+int sensorPin = A2;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+}
+
+void loop() {
+  int sensorValue = analogRead(sensorPin);
+  float voltage = sensorValue * (5.0 / 1023.0);
+  float temperature = voltage * 100.0;
+
+  // Turn off all LEDs before checking temperature thresholds
+  digitalWrite(LED1, LOW);
+  digitalWrite(LED2, LOW);
+  digitalWrite(LED3, LOW);
+
+  // Turn on the corresponding LED based on temperature
+  if (temperature < 25) {
+    digitalWrite(LED1, HIGH);
+  } 
+  else if (temperature >= 25 && temperature < 35) {
+    digitalWrite(LED2, HIGH);
+  } 
+  else {
+    digitalWrite(LED3, HIGH);
+  }
+
+  // Print values to the Serial Monitor
+  Serial.print("ADC value = ");
+  Serial.print(sensorValue);
+  Serial.print(" | Temperature = ");
+  Serial.print(temperature);
+  Serial.println(" °C");
+
+  delay(500); // Optional: adds a half-second pause so readings are easy to read
+}
+
+8

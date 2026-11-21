@@ -1,0 +1,24 @@
+#include <Servo.h>
+
+Servo myservo;  // Create a servo object to control a servo
+int pos = 0;    // Variable to store the servo position
+
+void setup() {
+  myservo.attach(9);  // Attaches the servo on pin 9 to the servo object
+}
+
+void loop() {
+  // Sweep from 0 degrees to 180 degrees
+  for (pos = 0; pos <= 180; pos += 1) {
+    myservo.write(pos);
+    delay(100);
+  }
+
+  // Sweep back from 180 degrees to 0 degrees
+  for (pos = 180; pos >= 0; pos -= 1) {
+    myservo.write(pos);
+    delay(15);
+  }
+}
+
+11
